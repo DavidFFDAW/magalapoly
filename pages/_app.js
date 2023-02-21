@@ -10,6 +10,7 @@ const MyApp = ({ Component, pageProps }) => {
             <style jsx global>
                 {globals}
             </style>
+            <title>MagalaPoly</title>
             <Component {...pageProps} />;
         </>
     );
