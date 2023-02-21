@@ -7,6 +7,9 @@ yarn-error.log*
 lerna-debug.log*
 .vapid-keys.json
 public/workbox-*.js
+public/workbox-*.js.map
+public/workbox-*.js.*
+public/workbox**
 public/sw.js
 public/sw.js.*
 public/sw.js.map
