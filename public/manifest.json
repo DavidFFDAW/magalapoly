@@ -1,7 +1,7 @@
 {
-    "theme_color": "#9235f6",
-    "background_color": "#3a9052",
-    "display": "fullscreen",
+    "theme_color": "#591c1e",
+    "background_color": "#782528",
+    "display": "standalone",
     "scope": "/",
     "start_url": "/",
     "name": "MagalaPoly",
