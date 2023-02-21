@@ -16,6 +16,18 @@ export const globals = css.global`
     .big {
         font-size: 4em;
     }
+    .login-button {
+        background-color: #c70008;
+        color: #f8f8f2;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 16px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        text-decoration: none;
+    }
     *,
     html,
     body {
