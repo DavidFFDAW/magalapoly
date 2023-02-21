@@ -35,7 +35,7 @@ class _Document extends Document {
                         href="/icons/apple-touch-icon.png"
                     />
                     <link rel="manifest" href="/manifest.json" />
-                    <link rel="shortcut icon" href="/magalapoly.ico" />
+                    <link rel="shortcut icon" href="/magalapoly-2.ico" />
                     {/* <link rel='icon'></link> */}
                     <style>{`
             html, body, #__next {
