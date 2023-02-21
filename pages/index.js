@@ -1,14 +1,24 @@
 import Head from "next/head";
 import CustomImage from "../components/Image";
-import { Marker, Popup } from "react-leaflet";
 import RegisterSW from "../components/RegisterSW";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 const DynamicMap = dynamic(() => import("@/components/DynamicMap"), {
     ssr: false,
 });
 
 const HomePage = () => {
+    const [ReadyMap, setReadyMap] = useState({ isReady: false, map: null });
+
+    useEffect(_ => { 
+        if (typeof window !== "undefined") {
+            const tmp = dynamic(() => import("@/components/Map"), {
+                ssr: false,
+            });
+            setReadyMap(_ => ({...ReadyMap, isReady: true, map: tmp }));
+        }
+    }, [])
 
     return (
         <>
@@ -58,26 +68,25 @@ const HomePage = () => {
                         encontrar:
                     </p>
 
-                    <DynamicMap
+                    { ReadyMap.isReady && <ReadyMap.map
                         zoom={13}
                         height={400}
                         style={{ marginBottom: 20 }}
+                        markers={[
+                            {
+                                lat: 36.734216876853004, 
+                                lng: -4.433079957962037,
+                                popup: 'Carrefour Rosaleda'
+                            },
+                            
+                            {
+                                lat:  36.72017580418115, 
+                                lng: -4.419454336166383,
+                                popup: 'Catedral de Málaga'
+                            },
+                        ]}
                     >
-                        <Marker
-                            position={[
-                                36.734216876853004, -4.433079957962037,
-                            ]}
-                        >
-                            <Popup>Carrefour Rosaleda</Popup>
-                        </Marker>
-                        <Marker
-                            position={[
-                                36.72017580418115, -4.419454336166383,
-                            ]}
-                        >
-                            <Popup>Catedral de Málaga</Popup>
-                        </Marker>
-                    </DynamicMap>
+                    </ReadyMap.map> }
                 </div>
             </div>
         </>
