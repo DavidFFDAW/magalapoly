@@ -26,13 +26,14 @@ const HomePage = () => {
                 <title>MAGALAPOLY - Landing</title>
             </Head>
 
-            <RegisterSW/>
+            <RegisterSW />
+
             <div
                 className="flex center al-center"
                 style={{
-                    height: "120vh",
+                    height: "auto",
                     paddingBottom: 80,
-                    paddingTop: 80,
+                    paddingTop: 5,
                 }}
             >
                 <div
