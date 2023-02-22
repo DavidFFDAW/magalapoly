@@ -1,19 +1,23 @@
-import { layouts } from "../styles/Layouts";
-import { globals } from "../styles/Globals";
+import "@/styles/styles.css";
+import { makeCookieObject } from "@/utils/cookie.parser";
 
 const MyApp = ({ Component, pageProps }) => {
     return (
         <>
-            <style jsx global>
-                {layouts}
-            </style>
-            <style jsx global>
-                {globals}
-            </style>
             <title>MagalaPoly</title>
-            <Component {...pageProps} />;
+            <Component {...pageProps} cookies={pageProps.cookies} />;
         </>
     );
 };
+
+export function getServerSideProps(context) {
+    const cookies = makeCookieObject(context.req.headers.cookie || "");
+
+    return {
+        props: {
+            cookies,
+        },
+    };
+}
 
 export default MyApp;

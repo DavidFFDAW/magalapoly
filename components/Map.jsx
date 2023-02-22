@@ -1,6 +1,6 @@
 import { MapContainer, Marker, Popup } from "react-leaflet";
 import { TileLayer } from "react-leaflet";
-
+import "leaflet/dist/leaflet.css";
 
 export default function Map({ children, ...props }) {
     const malaga = [36.7263744, -4.4302336];
@@ -24,16 +24,18 @@ export default function Map({ children, ...props }) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {markers.length > 0 ? markers.map((marker, indx) => {
-                return (
-                    <Marker
-                        key={`${marker.lat}-${indx}`}
-                        position={[marker.lat, marker.lng]}
-                    >
-                        <Popup>{marker.popup}</Popup>
-                    </Marker>
-                );
-            }) : null}
+            {markers.length > 0
+                ? markers.map((marker, indx) => {
+                      return (
+                          <Marker
+                              key={`${marker.lat}-${indx}`}
+                              position={[marker.lat, marker.lng]}
+                          >
+                              <Popup>{marker.popup}</Popup>
+                          </Marker>
+                      );
+                  })
+                : null}
 
             {children}
         </MapContainer>
