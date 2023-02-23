@@ -1,10 +1,13 @@
 import UserContextProvider from "@/context/UserContext";
 import "@/styles/styles.css";
+import Head from "next/head";
 
 const MyApp = ({ Component, pageProps }) => {
     return (
         <>
-            <title>MagalaPoly</title>
+            <Head>
+                <title>MagalaPoly</title>
+            </Head>
             <UserContextProvider>
                 <Component {...pageProps} cookies={pageProps.cookies} />;
             </UserContextProvider>
