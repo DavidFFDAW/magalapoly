@@ -1,19 +1,16 @@
-import { useRouter } from "next/router";
-import { cookies } from "next/headers";
-import cookieCutter from "cookie-cutter";
 import React from "react";
+import Router from "next/router";
 
 export default function AuthRedirector({ children }) {
     const [authorized, setAuthorized] = React.useState(false);
-    const router = useRouter();
 
     React.useEffect(() => {
-        const cookie = cookieCutter.get("Phpstorm-50b9282c");
-        console.log("coquetas: ", cookie);
+        const hasToken = Boolean(window.localStorage.getItem("next_auth_token"));
+        setAuthorized(hasToken);
 
-        // if (cookie.next_auth_token) {
-        //     setAuthorized(true);
-        // }
+        if (!hasToken) {
+            Router.push("/auth/login");
+        }
     }, []);
 
     return <>{authorized ? { children } : null}</>;
