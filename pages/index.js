@@ -4,9 +4,12 @@ import RegisterSW from "@/components/RegisterSW";
 import { useEffect, useState } from "react";
 import NativeLink from "@/components/NativeLink";
 import PageWrapper from "@/components/PageWrapper";
+import { useUserContext } from "@/context/UserContext";
 
 const HomePage = () => {
     const [ReadyMap, setReadyMap] = useState({ isReady: false, map: null });
+    const { user } = useUserContext();
+    // console.log("Landing User: ", user);
 
     useEffect((_) => {
         if (typeof window !== "undefined") {
@@ -17,6 +20,16 @@ const HomePage = () => {
         }
     }, []);
 
+    const LoginButton = Boolean(user) ? (
+        <NativeLink href="/user/data" className="login-button">
+            {user.username}
+        </NativeLink>
+    ) : (
+        <NativeLink href="/auth/login" className="login-button">
+            Iniciar sesión
+        </NativeLink>
+    );
+
     return (
         <>
             <RegisterSW />
@@ -25,9 +38,7 @@ const HomePage = () => {
                     className="flex end al-end"
                     style={{ padding: "10px 20px" }}
                 >
-                    <NativeLink href="/auth/login" className="login-button">
-                        Iniciar sesión
-                    </NativeLink>
+                    {LoginButton}
                 </div>
 
                 <div
