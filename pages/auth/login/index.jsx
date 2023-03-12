@@ -1,17 +1,12 @@
-import React from 'react';
 import PageWrapper from '@/components/PageWrapper';
 import Input from '@/components/Forms/Input';
 import { FormButton } from '@/components/Forms/Button';
 import CustomImage from '@/components/Image';
 import NativeLink from '@/components/NativeLink';
+import useLogin from './useLogin';
 
 export default function Login() {
-    const [formData, setFormData] = React.useState({ email: '', password: '' });
-
-    const handleSubmit = ev => {
-        ev.preventDefault();
-        console.log(formData);
-    };
+    const { setUserEmail, setUserPassword, submitLogin } = useLogin();
 
     return (
         <>
@@ -26,12 +21,12 @@ export default function Login() {
                             className="login-image"
                         />
                         {/* <h1>Login</h1> */}
-                        <form action="POST" onSubmit={handleSubmit} className="flex center al-center column gap">
+                        <form action="POST" onSubmit={submitLogin} className="flex center al-center column gap">
                             <Input
                                 label={'Email:'}
                                 name={'email'}
                                 type={'email'}
-                                onChange={ev => setFormData({ ...formData, email: ev.target.value })}
+                                onChange={setUserEmail}
                                 placeholder={'example@gmail.com'}
                                 autocomplete={'email'}
                             />
@@ -40,7 +35,7 @@ export default function Login() {
                                 label={'Password:'}
                                 name={'password'}
                                 type={'password'}
-                                onChange={ev => setFormData({ ...formData, password: ev.target.value })}
+                                onChange={setUserPassword}
                                 placeholder={'********'}
                                 autocomplete={'current-password'}
                             />
