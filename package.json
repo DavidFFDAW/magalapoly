@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@next/font": "13.1.6",
+        "@prisma/client": "^5.3.1",
         "cookie-cutter": "^0.2.0",
         "cookies": "^0.8.0",
         "eslint": "8.33.0",
@@ -29,7 +30,8 @@
     },
     "devDependencies": {
         "@types/node": "^20.7.0",
-        "@types/react": "^18.2.22",
+        "@types/react": "18.2.22",
+        "prisma": "^5.3.1",
         "typescript": "^5.2.2"
     }
 }
