@@ -26,5 +26,10 @@
         "react-leaflet": "^4.2.0",
         "sequelize": "^6.28.0",
         "web-push": "^3.5.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.7.0",
+        "@types/react": "^18.2.22",
+        "typescript": "^5.2.2"
     }
 }
