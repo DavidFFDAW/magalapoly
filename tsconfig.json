@@ -3,28 +3,28 @@
         "baseUrl": ".",
         "paths": {
             "@/*": [
-                "./*"
+                "/*"
             ],
             "@lib": [
-                "./lib/*"
+                "lib/*"
             ],
             "@components": [
-                "./components/*"
+                "components/*"
             ],
             "@pages": [
-                "./app/*"
+                "app/*"
             ],
             "@styles": [
-                "./styles/*"
+                "styles/*"
             ],
             "@utils": [
-                "./utils/*"
+                "utils/*"
             ],
             "@hooks": [
-                "./hooks/*"
+                "hooks/*"
             ],
             "@types": [
-                "./types/*"
+                "types/*"
             ]
         },
         "target": "es5",
