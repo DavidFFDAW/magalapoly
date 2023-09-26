@@ -7,16 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model impressions {
-  id         Int       @id @default(autoincrement())
-  ip_address String    @db.VarChar(50)
-  type       String?   @default("HOME") @db.VarChar(15)
-  app        String?   @default("/vps/home") @db.VarChar(15)
-  user_agent String?   @db.VarChar(150)
-  action     String?   @default("init") @db.VarChar(20)
-  language   String?   @default("es-ES") @db.VarChar(10)
-  url        String?   @db.VarChar(250)
-  screen     String?   @db.VarChar(100)
-  viewport   String?   @db.VarChar(100)
-  date       DateTime? @default(now()) @db.DateTime(0)
+model Role {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(20)
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+  Users     Users[]
+}
+
+model Users {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique @db.VarChar(150)
+  password  String    @db.VarChar(255)
+  username  String    @db.VarChar(150)
+  name      String?   @db.VarChar(50)
+  lastname  String?   @db.VarChar(50)
+  role_id   Int       @db.Int
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+  role      Role      @relation(fields: [role_id], references: [id])
 }
