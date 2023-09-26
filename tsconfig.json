@@ -2,17 +2,37 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./*"],
-            "@lib": ["./lib/*"],
-            "@components": ["./components/*"],
-            "@pages": ["./app/*"],
-            "@styles": ["./styles/*"],
-            "@utils": ["./utils/*"],
-            "@hooks": ["./hooks/*"],
-            "@types": ["./types/*"]
+            "@/*": [
+                "./*"
+            ],
+            "@lib": [
+                "./lib/*"
+            ],
+            "@components": [
+                "./components/*"
+            ],
+            "@pages": [
+                "./app/*"
+            ],
+            "@styles": [
+                "./styles/*"
+            ],
+            "@utils": [
+                "./utils/*"
+            ],
+            "@hooks": [
+                "./hooks/*"
+            ],
+            "@types": [
+                "./types/*"
+            ]
         },
         "target": "es5",
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "allowJs": true,
         "skipLibCheck": true,
         "strict": true,
@@ -31,6 +51,14 @@
             }
         ]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-    "exclude": ["node_modules"]
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "app/api/auth/[...nextauth]/route.js"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }
