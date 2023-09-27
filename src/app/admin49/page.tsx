@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function WPAdminPage({ children }: any) {
+export default function WPAdminPage() {
 
     return (
         <div>
