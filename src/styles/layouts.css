@@ -58,19 +58,19 @@
 .evenly {
     justify-content: space-evenly;
 }
-.al-start {
+.astart {
     align-items: flex-start;
 }
-.al-end {
+.aend {
     align-items: flex-end;
 }
-.al-center {
+.acenter {
     align-items: center;
 }
-.al-baseline {
+.abaseline {
     align-items: baseline;
 }
-.al-stretch {
+.astretch {
     align-items: stretch;
 }
 .content-start {
@@ -109,9 +109,48 @@
 .gap {
     gap: 35px;
 }
+.gap-small {
+    gap: 10px;
+}
+.gap-medium {
+    gap: 20px;
+}
 .grid {
     display: grid;
 }
 .place-items {
     place-items: center;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.underline {
+    text-decoration: underline;
+}
+.italic {
+    font-style: italic;
+}
+.bold {
+    font-weight: bold;
+}
+.light {
+    font-weight: lighter;
+}
+.normal {
+    font-weight: normal;
+}
+.letter-spacing {
+    letter-spacing: 1px;
+}
+.line-height {
+    line-height: 1.5;
+}
+.tcenter {
+    text-align: center;
+}
+.tleft {
+    text-align: left;
+}
+.tright {
+    text-align: right;
 }

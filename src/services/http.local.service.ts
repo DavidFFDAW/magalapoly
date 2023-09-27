@@ -1,9 +1,9 @@
-async function _makeFetchRequest(url, method, data = {}) {
+async function _makeFetchRequest(url: string, method: string, data: any = {}) {
     const options: any = {
         method: method,
-        mode: 'cors',
+        mode: "cors",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
     };
 
@@ -11,7 +11,7 @@ async function _makeFetchRequest(url, method, data = {}) {
     //     options.headers = { ...options.headers, Authorization: 'Bearer ' + token };
     // }
 
-    if (data && method !== 'GET' && method !== 'DELETE') {
+    if (data && method !== "GET" && method !== "DELETE") {
         options.body = JSON.stringify(data);
     }
 
@@ -19,12 +19,13 @@ async function _makeFetchRequest(url, method, data = {}) {
     return await fetchedData.json();
 }
 
-
 const HttpLocal = {
-    get: (endpoint: string) => _makeFetchRequest(endpoint, 'GET'),
-    post: (endpoint: string, data: any) => _makeFetchRequest(endpoint, 'POST', data),
-    put: (endpoint: string, data: any) => _makeFetchRequest(endpoint, 'PUT', data),
-    delete: (endpoint: string) => _makeFetchRequest(endpoint, 'DELETE'),
+    get: (endpoint: string) => _makeFetchRequest(endpoint, "GET"),
+    post: (endpoint: string, data: any) =>
+        _makeFetchRequest(endpoint, "POST", data),
+    put: (endpoint: string, data: any) =>
+        _makeFetchRequest(endpoint, "PUT", data),
+    delete: (endpoint: string) => _makeFetchRequest(endpoint, "DELETE"),
 };
 
 export default HttpLocal;
