@@ -1,5 +1,6 @@
 import "@/styles/styles.css";
 import type { Metadata } from "next";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import AuthSession from "@/components/Providers/AuthSession";
 
 export const metadata: Metadata = {
