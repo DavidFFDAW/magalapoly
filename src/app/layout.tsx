@@ -1,6 +1,6 @@
 import "@/styles/styles.css";
 import type { Metadata } from "next";
-import AuthSession from "@/components/AuthSession";
+import AuthSession from "@/components/Providers/AuthSession";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -15,7 +15,9 @@ export default function RootLayout({
     return (
         <html lang="es">
             <body>
-                <AuthSession>{children}</AuthSession>
+                <main className="main-app-wrapper">
+                    <AuthSession>{children}</AuthSession>
+                </main>
             </body>
         </html>
     );
