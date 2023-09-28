@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { MapContainer } from "react-leaflet";
 import { TileLayer } from "react-leaflet";
 import { MALAGA_COORDS } from "@/constants/config";
@@ -14,6 +14,7 @@ interface MapProps {
 }
 
 export default function Map({ children, ...props }: MapProps) {
+    const tileURL = "http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}";
 
     return (
         <MapContainer
@@ -29,8 +30,10 @@ export default function Map({ children, ...props }: MapProps) {
             key={Math.random()}
         >
             <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution={`&copy; <a href="${tileURL}">OpenStreetMap</a> contributors`}
+                url={tileURL}
+                subdomains={["mt0", "mt1", "mt2", "mt3"]}
+                maxZoom={50}
             />
 
             {children}
