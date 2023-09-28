@@ -52,8 +52,10 @@ body {
     padding: 0;
     max-width: 600px;
     background-color: #282a36;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px,
-            transparent 1px),
+    background-image: radial-gradient(
+            rgba(255, 255, 255, 0.2) 1px,
+            transparent 1px
+        ),
         radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-position: 0 0, 25px 25px;
     background-size: 50px 50px;
@@ -97,7 +99,7 @@ body {
     background: transparent;
     border: 2px solid var(--white);
     color: var(--white);
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
 .btn.cta {
@@ -113,7 +115,7 @@ body {
     background: transparent;
     border: none;
     color: var(--white);
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
 /* input {} */
@@ -122,7 +124,7 @@ body {
     padding: 5px 10px;
     background: var(--white);
     color: #282a36;
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
 .input::placeholder {
@@ -131,7 +133,7 @@ body {
 
 .form-error-text {
     color: var(--white);
-    font-size: .8rem;
+    font-size: 0.8rem;
     background-color: var(--red);
     padding: 5px 10px;
     border-radius: 8px;
@@ -148,6 +150,10 @@ body {
 .leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
     width: 100%;
     height: 100vh;
+}
+.leaflet-popup-content {
+    font-family: "Monopoly", sans-serif;
+    font-size: 1.2rem;
 }
 
 .warning-advertise-still-in-dev {
@@ -172,13 +178,9 @@ body {
     }
 }
 
-
-
-
-
 /* Animations */
 .appear {
-    animation: appear .3s ease-in-out;
+    animation: appear 0.3s ease-in-out;
 }
 
 @keyframes appear {
