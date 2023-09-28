@@ -1,10 +1,3 @@
-@font-face {
-    font-family: "Monopoly";
-    src: local("Monopoly"), url("/fonts/kabel.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-}
-
 *,
 html,
 body {
@@ -13,7 +6,9 @@ body {
     box-sizing: border-box;
     text-decoration: none;
     outline: none;
-    font-family: "Roboto", "Segoe UI", sans-serif;
+    font-family: "Futura", sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
 }
 
 h1,
@@ -22,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
+    margin: 0.82em 0;
     padding: 0;
     color: var(--white);
 }
@@ -31,9 +26,11 @@ a {
     text-decoration: none;
     color: var(--white);
 }
+
 a:active {
     color: var(--red);
 }
+
 a:visited {
     color: rgb(138, 63, 50);
 }
@@ -43,6 +40,7 @@ input {
     border: none;
     padding: 4px;
 }
+
 button {
     cursor: pointer;
     outline: none;
@@ -54,10 +52,8 @@ body {
     margin: 0 auto;
     max-width: 600px;
     background-color: #282a36;
-    background-image: radial-gradient(
-            rgba(255, 255, 255, 0.2) 1px,
-            transparent 1px
-        ),
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px,
+            transparent 1px),
         radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-position: 0 0, 25px 25px;
     background-size: 50px 50px;
@@ -67,11 +63,99 @@ body {
     width: 100%;
 }
 
-.monopoly {
-    font-family: "Monopoly", "Segoe UI", sans-serif;
+.font-300 {
+    font-weight: 300;
+}
+
+.font-400 {
+    font-weight: 400;
+}
+
+.font-500 {
+    font-weight: 500;
+}
+
+.font-600 {
+    font-weight: 600;
+}
+
+.font-700 {
+    font-weight: 700;
+}
+
+.font-800 {
+    font-weight: 800;
+}
+
+.font-900 {
+    font-weight: 900;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    font-size: .9rem;
+}
+
+.btn.cta {
+    color: var(--white);
+    text-transform: uppercase;
+    background-color: var(--red);
+    border: 2px solid var(--red);
+}
+
+.nobtn {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: .9rem;
+}
+
+/* input {} */
+.input {
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: var(--white);
+    color: #282a36;
+    font-size: .9rem;
+}
+
+.input::placeholder {
+    color: #9295a5;
+}
+
+.form-error-text {
+    color: var(--white);
+    font-size: .8rem;
+    background-color: var(--red);
+    padding: 5px 10px;
+    border-radius: 8px;
 }
 
 .leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
     width: 100%;
     height: 100vh;
+}
+
+
+/* Animations */
+.appear {
+    animation: appear .3s ease-in-out;
+}
+
+@keyframes appear {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
