@@ -1,4 +1,5 @@
 "use client";
+import { FormErrorMessage } from "@/components/Form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { FormEvent } from "react";
@@ -31,10 +32,7 @@ export default function LoginForm(): JSX.Element {
 
     return (
         <>
-            {error && <div className="flex between appear form-error-text">
-                {error}
-                <button className="nobtn" onClick={() => setError(null)}>&times;</button>
-            </div>}
+            {error && <FormErrorMessage message={error} setError={setError} />}
 
             <h2 className="monopoly font-700 upper">Iniciar sesión</h2>
 
