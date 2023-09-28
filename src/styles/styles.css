@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "Monopoly";
+    src: local("Monopoly"), url("/fonts/Kabel/kabel.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* FUTURA FONT FACES */
+@font-face {
+    font-family: "Futura";
+    src: local("Futura"), url("/fonts/Futura/Futura-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: local("Futura"), url("/fonts/Futura/Futura Medium.otf") format("opentype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: local("Futura"), url("/fonts/Futura/Futura Medium Italic.otf") format("opentype");
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: local("Futura"), url("/fonts/Futura/Futura Book.otf") format("opentype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: local("Futura"), url("/fonts/Futura/Futura Light.otf") format("opentype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: local("Futura"), url("/fonts/Futura/Futura Heavy.otf") format("opentype");
+    font-weight: 800;
+}
+
+.monopoly {
+    font-family: "Monopoly", sans-serif;
+}
+
+.futura {
+    font-family: "Futura", sans-serif;
+}
+
+@import './variables.css';
+@import './layouts.css';
+@import './globals.css';

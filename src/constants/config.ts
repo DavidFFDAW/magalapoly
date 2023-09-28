@@ -1,0 +1,1 @@
+export const MALAGA_COORDS: [number, number] = [36.7263744, -4.4302336];
