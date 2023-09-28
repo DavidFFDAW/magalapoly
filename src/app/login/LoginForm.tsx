@@ -15,7 +15,6 @@ export default function LoginForm(): JSX.Element {
         if (!form.get("login_email") || !form.get("login_password")) return setError("Por favor, ingrese su correo y contraseña");
 
         try {
-
             const response = await signIn("credentials", {
                 email: form.get("login_email"),
                 password: form.get("login_password"),
