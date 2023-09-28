@@ -52,6 +52,6 @@
     font-family: "Futura", sans-serif;
 }
 
-@import './Variables.css';
-@import './Layouts.css';
-@import './Globals.css';
+@import './variables.css';
+@import './layouts.css';
+@import './globals.css';
