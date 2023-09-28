@@ -1,6 +1,4 @@
-import "@/styles/variables.css";
-import "@/styles/layouts.css";
-import "@/styles/globals.css";
+import "@/styles/styles.css";
 import type { Metadata } from "next";
 import AuthSession from "@/components/AuthSession";
 

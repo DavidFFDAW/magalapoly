@@ -19,7 +19,7 @@ const handler = NextAuth({
                     placeholder: "********",
                 },
             },
-            async authorize(credentials, req) {
+            async authorize(credentials) {
                 const foundUser = await prisma.users.findUnique({
                     where: {
                         email: credentials?.email,
@@ -52,6 +52,10 @@ const handler = NextAuth({
             session.user = token.user as any;
             return session;
         },
+    },
+    pages: {
+        signIn: "/login",
+        error: "/login",
     },
 });
 
