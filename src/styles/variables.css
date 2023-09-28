@@ -2,3 +2,11 @@
     --red: #c70008;
     --white: #f8f8f2;
 }
+
+.red {
+    color: var(--red);
+}
+
+.white {
+    color: var(--white);
+}
