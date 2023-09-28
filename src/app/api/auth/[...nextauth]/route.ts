@@ -7,9 +7,11 @@ const handler = NextAuth({
     providers: [
         CredentialsProvider({
             name: "credentials",
+            id: "credentials",
+
             credentials: {
                 email: {
-                    label: "Username",
+                    label: "Email",
                     type: "email",
                     placeholder: "jsmith",
                 },
@@ -19,7 +21,7 @@ const handler = NextAuth({
                     placeholder: "********",
                 },
             },
-            async authorize(credentials) {
+            async authorize(credentials): Promise<any> {
                 const foundUser = await prisma.users.findUnique({
                     where: {
                         email: credentials?.email,
@@ -56,6 +58,10 @@ const handler = NextAuth({
     pages: {
         signIn: "/login",
         error: "/login",
+    },
+    session: {
+        strategy: "jwt",
+        maxAge: 30 * 24 * 60 * 60, // 30 days
     },
 });
 
