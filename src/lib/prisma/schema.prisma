@@ -18,7 +18,7 @@ model Role {
 model Users {
   id        Int       @id @default(autoincrement())
   email     String    @unique @db.VarChar(150)
-  password  String    @db.VarChar(255)
+  password  String    @db.Text
   username  String    @db.VarChar(150)
   name      String?   @db.VarChar(50)
   lastname  String?   @db.VarChar(50)

@@ -1,24 +1,28 @@
-import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { prisma } from "@/lib/db";
-import bcrypt from "bcrypt";
+import NextAuth from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { prisma } from '@/lib/db';
+import bcrypt from 'bcrypt';
+import { StorableUserAdapter } from '@/adapters/user.adapter';
+import { JWT } from 'next-auth/jwt';
+import { Session } from 'next-auth';
+import { User } from 'next-auth';
 
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
-            name: "credentials",
-            id: "credentials",
+            name: 'credentials',
+            id: 'credentials',
 
             credentials: {
                 email: {
-                    label: "Email",
-                    type: "email",
-                    placeholder: "jsmith",
+                    label: 'Email',
+                    type: 'email',
+                    placeholder: 'jsmith',
                 },
                 password: {
-                    label: "Password",
-                    type: "password",
-                    placeholder: "********",
+                    label: 'Password',
+                    type: 'password',
+                    placeholder: '********',
                 },
             },
             async authorize(credentials): Promise<any> {
@@ -26,41 +30,44 @@ const handler = NextAuth({
                     where: {
                         email: credentials?.email,
                     },
+                    include: {
+                        role: true,
+                    },
                 });
 
                 if (!foundUser) {
-                    throw new Error("Invalid credentials");
+                    throw new Error('No se ha encontrado el usuario');
                 }
 
-                const passwordMatch = await bcrypt.compare(
-                    credentials!.password,
-                    foundUser.password
-                );
+                const passwordMatch = await bcrypt.compare(credentials!.password, foundUser.password);
 
                 if (!passwordMatch) {
-                    throw new Error("Invalid credentials");
+                    throw new Error('La contraseña introducida no es correcta');
                 }
 
-                return foundUser;
+                const storableUser = StorableUserAdapter(foundUser);
+                return storableUser;
             },
         }),
     ],
     callbacks: {
         jwt({ token, user }) {
             if (user) token.user = user;
+
             return token;
         },
         session({ session, token }) {
             session.user = token.user as any;
+
             return session;
         },
     },
     pages: {
-        signIn: "/login",
-        error: "/login",
+        signIn: '/login',
+        error: '/login',
     },
     session: {
-        strategy: "jwt",
+        strategy: 'jwt',
         maxAge: 30 * 24 * 60 * 60, // 30 days
     },
 });

@@ -1,7 +1,7 @@
 'use client';
-import React from 'react'
+import React from 'react';
 import { Icon } from 'leaflet';
-import { Marker, Popup, useMapEvents } from "react-leaflet";
+import { Marker, Popup } from 'react-leaflet';
 
 interface MapMarkerProps {
     lat: number;
@@ -21,7 +21,7 @@ export default function MapMarker({ lat, lng, text }: MapMarkerProps) {
         <Marker
             icon={
                 new Icon({
-                    iconUrl: "/285659_marker_map_icon.svg",
+                    iconUrl: '/285659_marker_map_icon.svg',
                     iconSize: [25, 25],
                 })
             }
@@ -29,5 +29,5 @@ export default function MapMarker({ lat, lng, text }: MapMarkerProps) {
         >
             <Popup>{text}</Popup>
         </Marker>
-    )
+    );
 }

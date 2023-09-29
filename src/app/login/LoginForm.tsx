@@ -1,32 +1,34 @@
-"use client";
-import { FormErrorMessage } from "@/components/Form";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import React, { FormEvent } from "react";
+'use client';
+import { FormErrorMessage } from '@/components/Form';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import React, { FormEvent } from 'react';
 
 export default function LoginForm(): JSX.Element {
     const router = useRouter();
-    const [error, setError] = React.useState<string | null>("");
+    const [error, setError] = React.useState<string | null>('');
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = new FormData(event.currentTarget);
 
-        if (!form.get("login_email") || !form.get("login_password")) return setError("Por favor, ingrese su correo y contraseña");
+        if (!form.get('login_email') || !form.get('login_password'))
+            return setError('Por favor, ingrese su correo y contraseña');
 
         try {
-            const response = await signIn("credentials", {
-                email: form.get("login_email"),
-                password: form.get("login_password"),
+            const response = await signIn('credentials', {
+                email: form.get('login_email'),
+                password: form.get('login_password'),
                 redirect: false,
             });
 
+            console.log({ response });
+
             if (response?.error) return setError(response.error as string);
-            if (Boolean(response?.error)) return router.push("/admin");
+            if (Boolean(response?.error)) return router.push('/admin');
         } catch (error: any) {
             setError(error.message as string);
         }
-
     };
 
     return (
@@ -35,10 +37,7 @@ export default function LoginForm(): JSX.Element {
 
             <h2 className="monopoly font-700 upper">Iniciar sesión</h2>
 
-            <form
-                onSubmit={handleSubmit}
-                className="w1 flex acenter column gap-medium"
-            >
+            <form onSubmit={handleSubmit} className="w1 flex acenter column gap-medium">
                 <input
                     className="w1 input"
                     type="email"
@@ -63,8 +62,6 @@ export default function LoginForm(): JSX.Element {
                     </button>
                 </div>
             </form>
-
-
         </>
     );
 }
