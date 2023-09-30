@@ -1,23 +1,25 @@
-import { NextResponse } from "next/server";
-import webpush from "../../web.push";
+import { NextResponse } from 'next/server';
+import webpush from '../../web.push';
 
 export async function GET() {
     const data = {
-        title: "Hello from the server",
-        message: "This is a push notification",
+        title: 'Hello from the server',
+        message: 'This is a push notification',
     };
 
-    if (global.subscription) {
-        webpush.sendNotification(global.subscription, JSON.stringify(data));
+    if (global.subscription.length > 0) {
+        global.subscription.forEach(subscription => {
+            webpush.sendNotification(subscription, JSON.stringify(data));
+        });
     }
 
     return NextResponse.json(
         {
-            message: "Push sent",
+            message: 'Push sent',
         },
         {
             status: 200,
-        }
+        },
     );
 }
 
@@ -31,16 +33,16 @@ export async function POST(request: Request) {
             JSON.stringify({
                 title,
                 message,
-            })
+            }),
         );
     }
 
     return NextResponse.json(
         {
-            message: "Push sent",
+            message: 'Push sent',
         },
         {
             status: 200,
-        }
+        },
     );
 }
