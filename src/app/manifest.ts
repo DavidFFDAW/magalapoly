@@ -13,9 +13,19 @@ export default function manifest(): MetadataRoute.Manifest {
         lang: "es",
         icons: [
             {
-                src: "/favicon.ico",
+                src: "/monopoly-icon.png",
                 sizes: "any",
-                type: "image/x-icon",
+                type: "image/x-icon maskable",
+            },
+            {
+                src: "/monopoly-icon.png",
+                sizes: "192x192",
+                type: "image/png",
+            },
+            {
+                src: "/monopoly-icon.png",
+                sizes: "512x512",
+                type: "image/png",
             },
         ],
     };
