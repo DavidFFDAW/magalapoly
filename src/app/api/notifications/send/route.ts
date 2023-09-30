@@ -8,8 +8,8 @@ export async function GET() {
     };
 
     if (global.subscription.length > 0) {
-        global.subscription.forEach(subscription => {
-            webpush.sendNotification(subscription, JSON.stringify(data));
+        global.subscription.forEach(sub => {
+            webpush.sendNotification(sub, JSON.stringify(data));
         });
     }
 
@@ -27,14 +27,16 @@ export async function POST(request: Request) {
     const { message, title } = await request.json();
     console.log({ global });
 
-    if (global.subscription) {
-        webpush.sendNotification(
-            global.subscription,
-            JSON.stringify({
-                title,
-                message,
-            }),
-        );
+    if (global.subscription.length > 0) {
+        global.subscription.forEach(sub => {
+            webpush.sendNotification(
+                sub,
+                JSON.stringify({
+                    title,
+                    message,
+                }),
+            );
+        });
     }
 
     return NextResponse.json(
