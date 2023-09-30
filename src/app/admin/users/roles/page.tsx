@@ -26,7 +26,7 @@ export default async function UserRolesPage() {
                         No hay roles disponibles actualmente. Crea uno{" "}
                         <Link
                             href="/admin/users/roles/create"
-                            className="monopoly"
+                            className="monopoly underline"
                         >
                             aquí
                         </Link>

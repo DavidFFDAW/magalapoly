@@ -1,8 +1,8 @@
-'use client';
-import { useSession } from 'next-auth/react';
-import React from 'react';
+"use client";
+import { useSession } from "next-auth/react";
+import React from "react";
 
-export default function page() {
+export default function TestPage() {
     const session = useSession();
     console.log({ session });
 

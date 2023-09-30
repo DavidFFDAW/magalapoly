@@ -6,6 +6,7 @@ const Map = dynamic(() => import("../components/Map/Map"), { ssr: false });
 export default function Home() {
     return (
         <section className="landing-page">
+            {/* <Geolocation /> */}
             <header>
                 <h1
                     style={{ fontSize: 35, margin: 0 }}

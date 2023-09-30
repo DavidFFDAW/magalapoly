@@ -26,7 +26,7 @@ a {
     text-decoration: none;
     color: var(--white);
 }
-a::after {
+a.underlined::after {
     content: "";
     position: absolute;
     bottom: -3px;
@@ -225,6 +225,19 @@ body {
 /* Animations */
 .appear {
     animation: appear 0.3s ease-in-out;
+}
+.expand {
+    animation: expand 0.3s ease-in-out;
+}
+
+@keyframes expand {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(100%);
+    }
 }
 
 @keyframes appear {
