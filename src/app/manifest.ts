@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
         description: 'El monopoly más real en Málaga',
         scope: '/',
         start_url: '/',
-        display: 'browser',
+        display: 'minimal-ui',
         background_color: '#782528',
         theme_color: '#591c1e',
         lang: 'es',
