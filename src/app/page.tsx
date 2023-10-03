@@ -1,6 +1,8 @@
 import { Marker } from "@/components/Map";
+import { registerServiceWorker } from "@/components/ServiceWorker/useRegistration";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import SubscribeButton from "./SubscribeButton";
 const Map = dynamic(() => import("../components/Map/Map"), { ssr: false });
 
 export default function Home() {
@@ -68,6 +70,24 @@ export default function Home() {
 
             <section className="account-page-section" style={{ marginTop: 60 }}>
                 <div className="account-page-section-content">
+                    <h2 className="monopoly font-700 upper flex">
+                        No te pierdas nada</h2>
+                    <p
+                        className="white line-height tstart"
+                        style={{ margin: "15px 0" }}
+                    >
+                        Subscribete pulsando el botón de abajo para y activa las notificaciones para recibir las últimas novedades del juego.
+                    </p>
+
+                    <div className="w1 flex center responsive acenter">
+                        <SubscribeButton />
+                    </div>
+                </div>
+            </section>
+
+
+            <section className="account-page-section" style={{ marginTop: 80 }}>
+                <div className="account-page-section-content">
                     <h2 className="monopoly font-700 upper">¿Quieres jugar?</h2>
                     <p
                         className="white line-height tstart"
@@ -78,7 +98,7 @@ export default function Home() {
                     </p>
 
                     <div className="flex between children responsive acenter">
-                        <Link href="/login">
+                        <Link href="/register">
                             <button
                                 className="w1 btn futura font-500 upper"
                                 type="button"

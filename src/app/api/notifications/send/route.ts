@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import webpush from '../../web.push';
+import subscriptor from '../subscriptions';
 
 export async function GET() {
     const data = {
@@ -7,8 +8,11 @@ export async function GET() {
         message: 'This is a push notification',
     };
 
-    if (global.subscription.length > 0) {
-        global.subscription.forEach(sub => {
+    console.log({ subscriptors: subscriptor.subs });
+
+
+    if (subscriptor.subs.length > 0) {
+        subscriptor.subs.forEach(sub => {
             webpush.sendNotification(sub, JSON.stringify(data));
         });
     }
@@ -27,8 +31,8 @@ export async function POST(request: Request) {
     const { message, title } = await request.json();
     console.log({ global });
 
-    if (global.subscription.length > 0) {
-        global.subscription.forEach(sub => {
+    if (subscriptor.subs.length > 0) {
+        subscriptor.subs.forEach(sub => {
             webpush.sendNotification(
                 sub,
                 JSON.stringify({

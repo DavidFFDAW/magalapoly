@@ -1,5 +1,5 @@
 import React from "react";
-import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function LoginPage() {
     return (
         <div style={{ paddingTop: 25 }}>
-            <LoginForm />
+            <RegisterForm />
         </div>
     );
 }

@@ -1,5 +1,5 @@
-import webpush from '@/app/api/web.push';
+import { PushSubscription } from 'web-push';
 
 declare global {
-    var subscription: webpush.PushSubscription[];
+    var subscriptions: PushSubscription[];
 }

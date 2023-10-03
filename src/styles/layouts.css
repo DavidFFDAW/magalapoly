@@ -1,10 +1,22 @@
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
 .flex {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.flex.children > * {
+.flex.children>* {
     width: 100%;
 }
 

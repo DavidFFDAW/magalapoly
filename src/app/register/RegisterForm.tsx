@@ -1,15 +1,12 @@
 'use client';
 import { FormErrorMessage } from '@/components/Form';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { FormEvent } from 'react';
 
-export default function LoginForm(): JSX.Element {
+export default function RegisterForm(): JSX.Element {
     const router = useRouter();
-    const session = useSession();
     const [error, setError] = React.useState<string | null>('');
-
-    if (session.status === 'authenticated') router.push('/admin');
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -27,9 +24,8 @@ export default function LoginForm(): JSX.Element {
 
             console.log({ response });
 
-            const isError = Boolean(response?.error) && response?.status !== 200 && !response?.ok;
             if (response?.error) return setError(response.error as string);
-            if (!isError) return router.push('/admin');
+            if (!Boolean(response?.error)) return router.push('/admin');
         } catch (error: any) {
             setError(error.message as string);
         }

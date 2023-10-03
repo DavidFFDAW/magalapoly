@@ -6,6 +6,7 @@ import { StorableUserAdapter } from '@/adapters/user.adapter';
 import { JWT } from 'next-auth/jwt';
 import { Session } from 'next-auth';
 import { User } from 'next-auth';
+import { NextResponse } from 'next/server';
 
 const handler = NextAuth({
     providers: [
@@ -42,7 +43,7 @@ const handler = NextAuth({
                 const passwordMatch = await bcrypt.compare(credentials!.password, foundUser.password);
 
                 if (!passwordMatch) {
-                    throw new Error('La contraseña introducida no es correcta');
+                    throw new Error('La contraseña no coincide');
                 }
 
                 const storableUser = StorableUserAdapter(foundUser);
