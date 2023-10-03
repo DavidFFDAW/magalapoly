@@ -37,6 +37,8 @@ export async function POST(request: Request) {
                 name: name,
                 lastname: lastname,
                 role_id: 1,
+                is_request: true,
+                active: true,
             },
         });
 

@@ -1,19 +1,12 @@
 import React from 'react'
-import { prisma } from '@/lib/db';
 import { AdminTitle } from '@/components/Title/AdminTitle';
-import { OptionsContainer } from '@/components/Options/Options';
-import { OptionItem } from '@/components/Options/OptionItem';
-
-async function getUsers() {
-    return await prisma.users.findMany({
-        include: {
-            role: true
-        }
-    });
-}
+import { DangerOption, DefaultOption, OptionsContainer, WarningOption } from '@/components/Options';
+import { ContentOrNull } from '@/components/Loaders';
+import { getAllUsers } from '@/lib/prisma/services/user.service';
 
 export default async function UserListPage() {
-    const users = await getUsers();
+    const users = await getAllUsers();
+
 
     return (
         <>
@@ -26,20 +19,24 @@ export default async function UserListPage() {
             <div className='down flex start astart column nogap table-appearance'>
                 {users.map((user) => {
                     return (<>
-                        <div className='table-row flex start gap'>
+                        <div className={`table-row grid grid-row gap-medium relative ${user.is_request ? 'has_pending_request' : 'is_beta_or_admin'}`}>
                             <p>{user.id}</p>
                             <p>{user.email}</p>
-                            <p>{user.username}</p>
+                            <p className='hide-mobile'>{user.username}</p>
                             <p>{user.role.name as any}</p>
-                            <p>{user.createdAt?.toLocaleDateString()}</p>
+                            <p className='hide-mobile'>{user.createdAt?.toLocaleDateString()}</p>
 
                             <OptionsContainer>
-                                <OptionItem text='Borrar' type='success' />
+                                <WarningOption icon='pencil-square' text='Editar usuario' to={`/admin/users/edit?userid=${user.id}`} />
+                                <ContentOrNull condition={user.is_request}>
+                                    <DefaultOption icon='eye' text='Ver solicitud' to={`/admin/users/request?userid=${user.id}`} />
+                                </ContentOrNull>
+                                <DangerOption text='Borrar Usuario' to={`/admin/users/delete?userid=${user.id}`} />
                             </OptionsContainer>
-                        </div>
+                        </div >
                     </>);
                 })}
-            </div>
+            </div >
         </>
     )
 }

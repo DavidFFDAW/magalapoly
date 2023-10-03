@@ -8,9 +8,6 @@ export async function GET() {
         message: 'This is a push notification',
     };
 
-    console.log({ subscriptors: subscriptor.subs });
-
-
     if (subscriptor.subs.length > 0) {
         subscriptor.subs.forEach(sub => {
             webpush.sendNotification(sub, JSON.stringify(data));

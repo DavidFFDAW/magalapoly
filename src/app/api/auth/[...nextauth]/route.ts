@@ -30,6 +30,7 @@ const handler = NextAuth({
                 const foundUser = await prisma.users.findUnique({
                     where: {
                         email: credentials?.email,
+                        is_request: false,
                     },
                     include: {
                         role: true,
