@@ -26,10 +26,8 @@ export default function RegisterForm(): JSX.Element {
                 username: form.get('login_username')?.toString().trim(),
             });
 
-            console.log({ response });
-
-            if (response?.error) return setError(response.error as string);
-            if (!Boolean(response?.error)) return router.push('/');
+            if (response?.error) return setError(response.message as string);
+            if (!Boolean(response?.error)) return router.push('/commons/request');
         } catch (error: any) {
             setError(error.message as string);
         }

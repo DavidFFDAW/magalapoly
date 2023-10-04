@@ -11,7 +11,6 @@ export async function GET() {
 
 export async function POST(request: Request) {
     const { email, password, username, name, lastname } = await request.json();
-    console.log({ email, password, name, lastname });
 
     try {
         const foundUser = await prisma.users.findUnique({
@@ -22,7 +21,7 @@ export async function POST(request: Request) {
 
         if (foundUser) {
             return NextResponse.json(
-                { message: "User already exists" },
+                { error: true, message: "Este correo ya está en uso" },
                 { status: 400 }
             );
         }
@@ -44,11 +43,11 @@ export async function POST(request: Request) {
 
         if (newUser) {
             return NextResponse.json(
-                { message: "User created", user: newUser },
+                { error: false, message: "Se ha creado el usuario de forma correcta", user: newUser },
                 { status: 200 }
             );
         }
     } catch (error: any) {
-        return NextResponse.json({ message: error.message }, { status: 400 });
+        return NextResponse.json({ error: true, message: error.message }, { status: 400 });
     }
 }

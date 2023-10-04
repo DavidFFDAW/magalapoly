@@ -12,19 +12,20 @@ export default async function UserListPage() {
         <>
             <AdminTitle
                 icon="person"
-                title="Usuario"
+                title="Usuarios"
                 description="Controla los usuarios de la aplicación"
             />
 
             <div className='down flex start astart column nogap table-appearance'>
                 {users.map((user) => {
                     return (<>
-                        <div className={`table-row grid grid-row gap-medium relative ${user.is_request ? 'has_pending_request' : 'is_beta_or_admin'}`}>
+                        <div className={`table-row flex between gap-medium relative ${user.is_request ? 'has_pending_request' : 'is_beta_or_admin'}`}>
                             <p>{user.id}</p>
-                            <p>{user.email}</p>
-                            <p className='hide-mobile'>{user.username}</p>
+                            <p>{user.name}</p>
+                            <p>{user.lastname}</p>
+                            <p className='hide-mobile'>{user.email}</p>
                             <p>{user.role.name as any}</p>
-                            <p className='hide-mobile'>{user.createdAt?.toLocaleDateString()}</p>
+                            {/* <p className='hide-mobile'>{user.createdAt?.toLocaleDateString()}</p> */}
 
                             <OptionsContainer>
                                 <WarningOption icon='pencil-square' text='Editar usuario' to={`/admin/users/edit?userid=${user.id}`} />

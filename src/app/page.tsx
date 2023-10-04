@@ -3,6 +3,7 @@ import { registerServiceWorker } from "@/components/ServiceWorker/useRegistratio
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import SubscribeButton from "./SubscribeButton";
+import LogInButton from "./LoginButton";
 const Map = dynamic(() => import("../components/Map/Map"), { ssr: false });
 
 export default function Home() {
@@ -106,14 +107,7 @@ export default function Home() {
                                 Solicitar beta
                             </button>
                         </Link>
-                        <Link href="/login">
-                            <button
-                                className="w1 btn cta futura font-700"
-                                type="button"
-                            >
-                                Acceder
-                            </button>
-                        </Link>
+                        <LogInButton />
                     </div>
                 </div>
             </section>

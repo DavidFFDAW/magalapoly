@@ -24,6 +24,10 @@
     flex-direction: column;
 }
 
+.down-small {
+    margin-top: 30px;
+}
+
 .row {
     flex-direction: row;
 }

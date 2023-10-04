@@ -1,14 +1,10 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from '@/lib/db';
 import bcrypt from 'bcrypt';
 import { StorableUserAdapter } from '@/adapters/user.adapter';
-import { JWT } from 'next-auth/jwt';
-import { Session } from 'next-auth';
-import { User } from 'next-auth';
-import { NextResponse } from 'next/server';
 
-const handler = NextAuth({
+export const OPTIONS: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             name: 'credentials',
@@ -72,6 +68,8 @@ const handler = NextAuth({
         strategy: 'jwt',
         maxAge: 30 * 24 * 60 * 60, // 30 days
     },
-});
+}
+
+const handler = NextAuth(OPTIONS);
 
 export { handler as GET, handler as POST };
