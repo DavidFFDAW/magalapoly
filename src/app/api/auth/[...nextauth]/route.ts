@@ -23,10 +23,12 @@ export const OPTIONS: NextAuthOptions = {
                 },
             },
             async authorize(credentials): Promise<any> {
+                if (!credentials?.password) throw new Error('Debes introducir una contraseña');
+
                 const foundUser = await prisma.users.findUnique({
                     where: {
                         email: credentials?.email,
-                        is_request: false,
+                        active: true,
                     },
                     include: {
                         role: true,
@@ -34,8 +36,10 @@ export const OPTIONS: NextAuthOptions = {
                 });
 
                 if (!foundUser) {
-                    throw new Error('No se ha encontrado el usuario');
+                    throw new Error('No se ha encontrado este usuario');
                 }
+
+                if (foundUser.is_request) throw new Error('No puedes iniciar sesión porque tu solicitud aún no ha sido aprobada');
 
                 const passwordMatch = await bcrypt.compare(credentials!.password, foundUser.password);
 
